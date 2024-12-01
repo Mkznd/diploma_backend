@@ -1,4 +1,4 @@
-from completions.completions import generate_script
+from video_generation.completions.completions import generate_script
 
 
 def write_script(topic: str, length: int, name: str, dir_name: str):

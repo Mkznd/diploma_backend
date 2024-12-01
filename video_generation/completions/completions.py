@@ -2,9 +2,9 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from openai._legacy_response import HttpxBinaryResponseContent
 
-from completions.image_prompts import get_images_prompt, get_thumbnail_prompt
-from completions.script_prompts import get_prompt_for_script, get_improvement_prompt
-from completions.topic_prompts import get_topic_prompt
+from video_generation.completions.image_prompts import get_images_prompt, get_thumbnail_prompt
+from video_generation.completions.script_prompts import get_prompt_for_script, get_improvement_prompt
+from video_generation.completions.topic_prompts import get_topic_prompt
 from concurrent.futures import ThreadPoolExecutor
 
 load_dotenv()
@@ -24,7 +24,7 @@ def generate_script(topic: str, length: int):
 
 
 def text_to_speech(text: str) -> HttpxBinaryResponseContent:
-    return client.audio.speech.create(model="tts-1", voice="alloy", input=text)
+    return client.audio.speech.create(model="tts-1", voice="echo", input=text)
 
 
 def generate_image(prompt: str):

@@ -81,7 +81,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 ### PyCharm+all Patch ###
-# Ignore everything but code style settings and run configurations
+# Ignore everything but code style settings.py and run configurations
 # that are supposed to be shared within teams.
 
 .idea/*
@@ -220,11 +220,11 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
+# Spyder project settings.py
 .spyderproject
 .spyproject
 
-# Rope project settings
+# Rope project settings.py
 .ropeproject
 
 # mkdocs documentation

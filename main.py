@@ -1,11 +1,12 @@
 from fastapi import FastAPI
+from video_generation.main import generate_video
 
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return generate_video("Black hole formation", 5)
 
 
 @app.get("/hello/{name}")

@@ -6,7 +6,7 @@ import requests
 import openai
 from dotenv import load_dotenv
 
-from completions.completions import generate_images, generate_thumbnail
+from video_generation.completions.completions import generate_images, generate_thumbnail
 
 load_dotenv()
 
