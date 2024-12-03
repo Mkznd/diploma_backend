@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 from video_generation.images import generate_and_write_images_and_thumbnail
@@ -27,20 +28,25 @@ from video_generation.write_script import write_script
 #     credentials = flow.run_local_server()
 #     return build(API_SERVICE_NAME, API_VERSION, credentials=credentials, developerKey=os.environ['YOUTUBE_API_KEY'])
 
+
 def generate_video(topic: str, length: int):
     base_dir = "."
     base_name = "".join(topic.split()).replace("'", "")
     dir_name = f"{base_dir}/{base_name}"
     name = "".join([i.capitalize() for i in topic.split()])
-    if not os.path.isdir(dir_name):
-        os.mkdir(dir_name)
+    if os.path.isdir(dir_name):
+        print("Directory already exists!")
+        return f"{dir_name}/{name}.mp4"
+    os.mkdir(dir_name)
     script = write_script(topic, length, name, dir_name)
     print("Script written!\n", script)
     voice_length = convert_text_to_speech(path=dir_name, name=name, text=script)
     print("Voice generated! Duration: ", voice_length)
     n = generate_and_write_images_and_thumbnail(script, length, dir_name)
     if n > 0:
-        make_video(n, dir_name, voice_length, name)
+        return make_video(n, dir_name, voice_length, name)
+
+
 # args = generate_args(
 #     dir_name=dir_name, topic=detailed_topic, script=script, name=name
 # )

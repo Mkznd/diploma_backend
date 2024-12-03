@@ -3,7 +3,7 @@ import math
 from moviepy.editor import *
 
 
-def make_video(n: int, dir_name: str, voice_length: float, name: str):
+def make_video(n: int, dir_name: str, voice_length: float, name: str) -> str:
     duration = voice_length / n
 
     clips = list(
@@ -25,9 +25,10 @@ def make_video(n: int, dir_name: str, voice_length: float, name: str):
         audio=f"{dir_name}/{name}.mp3",
         fps=24,
         audio_codec="libmp3lame",
-        audio_bitrate="48k",
+        audio_bitrate="160k",
     )
 
     vid = VideoFileClip(f"{dir_name}/{name}.mp4")
     print(vid)
     print(vid.audio)
+    return f"{dir_name}/{name}.mp4"

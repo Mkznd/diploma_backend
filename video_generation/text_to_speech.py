@@ -56,6 +56,7 @@ def convert_text_to_speech(path: str, name: str, text: str):
             audio_stream.seek(0)
             mp3_info = MP3(audio_stream)
             target_bitrate = f"{mp3_info.info.bitrate // 1000}k"
+            print(f"Target bitrate: {target_bitrate}")
 
         # Append the audio chunk to the final audio
         combined_audio += audio
